@@ -6,7 +6,7 @@ st.set_page_config(page_title='Hackaton Minor Datascience 2024 (groep 3)', page_
 
 # sidebar
 with st.sidebar: 
-  selected = option_menu(menu_title="Menu", options=["Intro", "Energievraag Sectoren", "Zonnepanelen"], icons=["play", "airplane", "bezier"], menu_icon="list")
+  selected = option_menu(menu_title="Menu", options=["Intro", "Energievraag Sectoren", "Zonnepanelen"], icons=["play", "building-up", "sun"], menu_icon="list")
 
 # --------------------------------------------------------------------------
 
