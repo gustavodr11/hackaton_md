@@ -12,7 +12,7 @@ with st.sidebar:
 
 # INTRO pagina
 if selected == 'Intro':
-    st.title("Hackaton - Groep 3", icon='laptop')
+    st.title("Hackaton - Groep 3", icons='laptop')
     
 
 # --------------------------------------------------------------------------
