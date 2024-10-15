@@ -12,7 +12,15 @@ with st.sidebar:
 
 # INTRO pagina
 if selected == 'Intro':
-    st.title("💻 Hackaton - Groep 3")
+    st.title("Hackaton - Groep 3 ")
+    
+    
+    # Bronnen
+    st.write("### Gebruikte Bronnen:")
+    st.write("""
+        - [Youtube filmpje](https://www.youtube.com/watch?v=hEPoto5xp3k)
+        - [Streamlit documentatie](https://docs.streamlit.io/)
+    """)
     
 
 # --------------------------------------------------------------------------
