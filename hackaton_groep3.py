@@ -16,7 +16,7 @@ with st.sidebar:
 
 # INTRO pagina
 if selected == 'Intro':
-    st.title("Hackaton - Groep 3 ")
+    st.title("Hackaton - Groep 3")
     
     
     # Bronnen
@@ -46,7 +46,7 @@ if selected == "Energievraag Sectoren":
 
   df = pd.read_excel('Energieverbruik_ddjh2_0.xlsx')
   
-  fig, axes = plt.subplots(3, 3, figsize=(20,12))
+  fig, axes = plt.subplots(3, 3, figsize=(18,12))
 
   sns.regplot(ax=axes[0, 0], data=df, x='years', y='Non-ferrobedrijven')
   sns.regplot(ax=axes[0, 1], data=df[df['years'] >= 2010], x="years", y="Vervoer en opslag")
