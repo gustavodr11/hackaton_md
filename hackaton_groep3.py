@@ -3,6 +3,7 @@ from streamlit_option_menu import option_menu
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import plotly.express as px
 
 
 st.set_page_config(page_title='Hackaton Minor Datascience 2024 (groep 3)', page_icon='💻')
@@ -32,6 +33,16 @@ if selected == 'Intro':
 # ENERGIEVRAAG SECTOREN pagina
 if selected == "Energievraag Sectoren": 
   st.title("Energievraag Sectoren")
+  
+  # Piechart
+  sectoren = ['Non-ferrobedrijven', 'Vervoer en opslag', 'Houtindustrie', 'Groothandel/hygiene', 
+            'Voedings en genotsmiddelen', 'Auto-industrie', 'Farmaceutische industrie', 
+            'Drankindustrie', 'Leidingen industrie']
+
+  aantal = [1, 12, 1, 1, 1, 4, 2, 1, 1]
+
+  fig = px.pie(values=aantal, names=sectoren, title="Aantal bedrijven per sector")
+  fig.show()
 
   df = pd.read_excel('Energieverbruik_ddjh2_0.xlsx')
   
