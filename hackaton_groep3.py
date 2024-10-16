@@ -28,7 +28,25 @@ if selected == 'Intro':
 
 # ENERGIEVRAAG SECTOREN pagina
 if selected == "Energievraag Sectoren": 
-  st.title("Energievraag Sectoren") 
+  st.title("Energievraag Sectoren")
+
+  df = pd.read_excel('Energieverbruik_ddjh2_0.xlsx')
+  
+  fig, axes = plt.subplots(3, 3, figsize=(20,12))
+
+sns.regplot(ax=axes[0, 0], data=df, x='years', y='Non-ferrobedrijven')
+sns.regplot(ax=axes[0, 1], data=df[df['years'] >= 2010], x="years", y="Vervoer en opslag")
+sns.regplot(ax=axes[0, 2], data=df, x='years', y='Houtindustrie')
+sns.regplot(ax=axes[1, 0], data=df[df['years'] >= 2011], x='years', y='Groothandel/hygiene')
+sns.regplot(ax=axes[1, 1], data=df, x='years', y='Voedings en genotsmiddelen')
+sns.regplot(ax=axes[1, 2], data=df[df['years'] >= 1995], x='years', y='Auto-industrie')
+sns.regplot(ax=axes[2, 0], data=df[df['years'] >= 2011], x='years', y='Farmaceutische industrie')
+sns.regplot(ax=axes[2, 1], data=df[df['years'] >= 1995], x='years', y='Drankindustrie')
+sns.regplot(ax=axes[2, 2], data=df[df['years'] >= 2011], x='years', y='Leidingen industrie')
+
+plt.tight_layout()
+
+st.pyplot(fig)
   
 
 # --------------------------------------------------------------------------
