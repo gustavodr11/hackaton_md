@@ -42,7 +42,7 @@ if selected == "Energievraag Sectoren":
   aantal = [1, 12, 1, 1, 1, 4, 2, 1, 1]
 
   fig = px.pie(values=aantal, names=sectoren, title="Aantal bedrijven per sector")
-  fig.show()
+  st.plotly_chart(fig)
 
   df = pd.read_excel('Energieverbruik_ddjh2_0.xlsx')
   
