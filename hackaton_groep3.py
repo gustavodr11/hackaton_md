@@ -1,5 +1,8 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 
 st.set_page_config(page_title='Hackaton Minor Datascience 2024 (groep 3)', page_icon='💻')
