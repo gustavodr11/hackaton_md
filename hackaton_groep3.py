@@ -157,3 +157,5 @@ if selected == "Energievraag Sectoren":
 # ZONNEPANELEN pagina
 if selected == 'Zonnepanelen':
   st.title("Zonnepanelen")
+
+  
