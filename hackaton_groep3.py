@@ -192,3 +192,24 @@ if selected == 'Zonnepanelen':
 
   # Toon de grafiek in Streamlit
   st.plotly_chart(fig3)
+  
+
+  # PLOT stievy
+  df4 = pd.read_excel("Data_verbruik_v8.xlsx")
+
+  df4['Aantal_zonnepanellen'] = pd.to_numeric(df4['Aantal_zonnepanellen'], errors='coerce')
+  df4['Maximale_opbrengst_zonnepanelen (kwh)'] = pd.to_numeric(df4['Maximale_opbrengst_zonnepanelen (kwh)'], errors='coerce')
+  df4['oppervlakte'] = pd.to_numeric(df4['oppervlakte'], errors='coerce')
+
+  # Bereken de Huidige_opbrengst
+  df4['Huidige_opbrengst'] = (df4['Aantal_zonnepanellen'] / (df4['oppervlakte'] * 0.7 / 1.65)) * df4['Maximale_opbrengst_zonnepanelen (kwh)']
+
+  # Maak een barplot met Plotly
+  fig4 = px.bar(df4, x='pand', y=['Huidige_opbrengst', 'Maximale_opbrengst_zonnepanelen (kwh)'],
+               barmode='group',
+               labels={'value': 'Opbrengst (kWh)', 'pand': 'Pand', 'variable': 'Type'},
+               title='Vergelijking Huidige en Maximale Elektriciteitsopbrengst per Pand')
+
+  # Toon de grafiek in Streamlit
+  st.plotly_chart(fig4)
+  
