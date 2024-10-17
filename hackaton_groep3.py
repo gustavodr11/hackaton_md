@@ -4,6 +4,8 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import plotly.express as px
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 
 st.set_page_config(page_title='Hackaton Minor Datascience 2024 (groep 3)', page_icon='💻')
@@ -45,16 +47,14 @@ if selected == "Energievraag Sectoren":
   fig = px.pie(values=aantal, names=sectoren, title="Aantal bedrijven per sector in bedrijfsterrein Sloterdijk Poort Noord")
   st.plotly_chart(fig)
 
+
+  # Subplots
   df = pd.read_excel('Energieverbruik_ddjh2_0.xlsx')
 
   # Checkbox 
   limit_checkbox = st.checkbox('Beperk de y-as tot een maximum van 0.3')
 
   fig, axes = plt.subplots(3, 3, figsize=(18, 12))
-
-  sectoren = ['Non-ferrobedrijven', 'Vervoer en opslag', 'Houtindustrie', 
-              'Groothandel/hygiene', 'Voedings en genotsmiddelen', 'Auto-industrie', 
-              'Farmaceutische industrie', 'Drankindustrie', 'Leidingen industrie']
 
   # regplots
   sns.regplot(ax=axes[0, 0], data=df, x='years', y='Non-ferrobedrijven')
