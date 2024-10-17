@@ -157,7 +157,8 @@ if selected == "Energievraag Sectoren":
 # ZONNEPANELEN pagina
 if selected == 'Zonnepanelen':
   st.title("Zonnepanelen")
-  
+
+  # SCREENSHOTS
   st.subheader("Bestaande infrastructuur op het terrein")
   st.image("middenspanningskabels_ams.png", caption="Middenspanningskabels in Sloterdijk Poort Noord", use_column_width=True)
   
@@ -165,7 +166,7 @@ if selected == 'Zonnepanelen':
   st.image("panden_ams.png", caption="Panden in Sloterdijk Poort Noord")
 
 
-  # Streamlit layout
+  # AANTAL ZONNEPANELEN HIST
   # Handmatig ingevoerde data
   pand = [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
   aantal_zonnepanelen = [3669, 115, 0, 482, 0, 3283, 0, 0, 0, 0, 0, 673, 0, 0, 1504, 0, 0, 0, 2067, 552, 680, 3100, 0, 0]
@@ -178,10 +179,16 @@ if selected == 'Zonnepanelen':
       'Potentieel zonnepanelen': potentieel
   })
 
+  # Zet de data in lang formaat voor Plotly
+  df_melted = df3.melt(id_vars=['Pand'], value_vars=['Aantal zonnepanelen', 'Potentieel zonnepanelen'], 
+                       var_name='Type', value_name='Aantal')
+
   # Maak een histogram met Plotly
-  fig3 = px.histogram(df3, x='Pand', y=['Aantal zonnepanelen', 'Potentieel zonnepanelen'], 
-                     barmode='group', 
-                     title='Aantal Zonnepanelen en Potentieel per Pand')
+  fig3 = px.bar(df_melted, x='Pand', y='Aantal', color='Type', barmode='group',
+                title='Aantal Zonnepanelen en Potentieel per Pand')
+
+  # Pas de y-as label aan
+  fig3.update_layout(yaxis_title="Aantal")
 
   # Toon de grafiek in Streamlit
   st.plotly_chart(fig3)
