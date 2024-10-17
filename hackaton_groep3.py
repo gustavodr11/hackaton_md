@@ -162,4 +162,4 @@ if selected == 'Zonnepanelen':
   st.image("middenspanningskabels_ams.png", caption="Middenspanningskabels in Sloterdijk Poort Noord", use_column_width=True)
   
   st.subheader("Pandnummers Sloterijk Poort Noord")
-  st.image("panden_ams.png", caption="Panden in Sloterdijk Poort Noord", use_column_width=True)
+  st.image("panden_ams.png", caption="Panden in Sloterdijk Poort Noord")
