@@ -46,15 +46,12 @@ if selected == "Energievraag Sectoren":
 
   # Piechart subplot
   fig = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]],
-                      subplot_titles=["Bedrijven per Sector", "Energieverbruik 2032"])
+                      subplot_titles=["Bedrijven per Sector", "Energieverbruik 2023"])
 
   fig.add_trace(go.Pie(labels=sectoren, values=[1, 12, 1, 1, 1, 4, 2, 1, 1], 
                        name="Aantal bedrijven per sector"), row=1, col=1)
-  fig.add_trace(go.Pie(labels=sectoren, values=aantal_2023, name="Energieverbruik 2032"), row=1, col=2)
-  fig.update_traces(hole=0.3, hoverinfo="label+percent+name")
-  fig.update_layout(title_text="Vergelijking: Bedrijven per Sector en Energieverbruik 2032",
-                    annotations=[dict(text='Bedrijven', x=0.18, y=0.5, font_size=15, showarrow=False),
-                                 dict(text='Verbruik', x=0.82, y=0.5, font_size=15, showarrow=False)])
+  fig.add_trace(go.Pie(labels=sectoren, values=aantal_2023, name="Energieverbruik 2023"), row=1, col=2)
+  fig.update_layout(title_text="Vergelijking: Bedrijven per Sector en Energieverbruik 2023")
 
   st.plotly_chart(fig)
 
