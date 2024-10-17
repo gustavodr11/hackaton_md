@@ -104,7 +104,8 @@ if selected == "Energievraag Sectoren":
       # Lijnplot voor dagelijks verbruik
       fig2 = px.line(df_dagelijks, x='Dag', y='Dagelijks Verbruik', color=sector_col, 
                       title=f'{keuze} per dag per sector', 
-                      labels={'Dagelijks Verbruik': 'Verbruik (kWh)', 'Dag': 'Dag van de week'})
+                      labels={'Dagelijks Verbruik': 'Verbruik (kWh)', 'Dag': 'Dag van de week'},
+                      markers=True)
   else:
       # Staafdiagram voor wekelijkse of maandelijkse verbruik
       fig2 = px.bar(df2, x=sector_col, y=keuze, color=sector_col, 
