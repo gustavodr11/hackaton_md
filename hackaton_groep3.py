@@ -158,4 +158,4 @@ if selected == "Energievraag Sectoren":
 if selected == 'Zonnepanelen':
   st.title("Zonnepanelen")
 
-  
+  st.image("middenspanningskabels_ams.png", caption="Middenspanningskabels in Sloterdijk Poort Noord", use_column_width=True)
