@@ -9,8 +9,6 @@ from plotly.subplots import make_subplots
 import folium
 from folium.plugins import HeatMap
 from streamlit_folium import st_folium
-from geopy.geocoders import Nominatim
-from geopy.exc import GeocoderTimedOut
 
 
 st.set_page_config(page_title='Hackaton Minor Datascience 2024 (groep 3)', page_icon='💻')
