@@ -51,7 +51,7 @@ if selected == "Energievraag Sectoren":
   fig.add_trace(go.Pie(labels=sectoren, values=[1, 12, 1, 1, 1, 4, 2, 1, 1], 
                        name="Aantal bedrijven per sector"), row=1, col=1)
   fig.add_trace(go.Pie(labels=sectoren, values=aantal_2023, name="Energieverbruik 2023"), row=1, col=2)
-  fig.update_layout(title_text="Vergelijking: Bedrijven per Sector en Energieverbruik 2023")
+  fig.update_layout(title_text="Piechart Bedrijven per Sector en Energieverbruik 2023")
 
   st.plotly_chart(fig)
 
