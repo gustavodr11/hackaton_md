@@ -166,16 +166,22 @@ if selected == 'Zonnepanelen':
 
 
   # Streamlit layout
-  df3 = pd.read_excel("Data_verbruik_v8.xlsx")
-  st.subheader("Histogram van Zonnepanelen per Pand")
+  # Handmatig ingevoerde data
+  pand = [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
+  aantal_zonnepanelen = [3669, 115, 0, 482, 0, 3283, 0, 0, 0, 0, 0, 673, 0, 0, 1504, 0, 0, 0, 2067, 552, 680, 3100, 0, 0]
+  potentieel = [14743, 1649, 690, 637, 828, 4523, 3638, 5703, 2370, 3431, 3045, 1769, 444, 2974, 11061, 540, 843, 798, 4436, 1457, 1545, 3155, 65, 3896]
 
-  # Zorg ervoor dat er geen null waarden zijn in de kolommen die je nodig hebt
-  df3 = df3.dropna(subset=['pand', 'Aantal_zonnepanellen', 'Potentieel_zonnepanelen'])
+  # Maak een dataframe met de gegevens
+  df3 = pd.DataFrame({
+      'Pand': pand,
+      'Aantal zonnepanelen': aantal_zonnepanelen,
+      'Potentieel zonnepanelen': potentieel
+  })
 
   # Maak een histogram met Plotly
-  fig3 = px.histogram(df3, x='pand', y=['Aantal_zonnepanellen', 'Potentieel_zonnepanelen'], 
-                   barmode='group', 
-                   title='Aantal Zonnepanelen en Potentieel per Pand')
+  fig3 = px.histogram(df3, x='Pand', y=['Aantal zonnepanelen', 'Potentieel zonnepanelen'], 
+                     barmode='group', 
+                     title='Aantal Zonnepanelen en Potentieel per Pand')
 
   # Toon de grafiek in Streamlit
   st.plotly_chart(fig3)
