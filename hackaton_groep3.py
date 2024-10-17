@@ -79,11 +79,6 @@ if selected == "Energievraag Sectoren":
 
   st_folium(m, width=700, height=500)
 
-  # Voeg een lijn of lege regel toe om de lay-out te resetten
-  st.markdown("---")  # Een horizontale lijn
-  # of
-  st.markdown("<br>", unsafe_allow_html=True)  # Voeg een lege regel toe
-
 
   # DAGELIJKS, WEEKELIJKS, MAANDELIJKS PLOTS
   # Lees het Excel-bestand in
