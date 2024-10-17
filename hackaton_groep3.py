@@ -102,17 +102,17 @@ if selected == "Energievraag Sectoren":
   # Maak de visualisatie op basis van de kolomkeuze
   if keuze == 'Dagelijks Verbruik':
       # Lijnplot voor dagelijks verbruik
-      fig = px.line(df_dagelijks, x='Dag', y='Dagelijks Verbruik', color=sector_col, 
+      fig2 = px.line(df_dagelijks, x='Dag', y='Dagelijks Verbruik', color=sector_col, 
                       title=f'{keuze} per dag per sector', 
                       labels={'Dagelijks Verbruik': 'Verbruik (kWh)', 'Dag': 'Dag van de week'})
   else:
       # Staafdiagram voor wekelijkse of maandelijkse verbruik
-      fig = px.bar(df2, x=sector_col, y=keuze, color=sector_col, 
+      fig2 = px.bar(df2, x=sector_col, y=keuze, color=sector_col, 
                       title=f'Energieverbruik per sector ({keuze})', 
                       labels={keuze: 'Verbruik (kWh)'})
 
   # Grafiek weergeven in Streamlit
-  st.plotly_chart(fig)
+  st.plotly_chart(fig2)
 
 
   # SUBPLOTS
