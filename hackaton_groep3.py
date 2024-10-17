@@ -62,7 +62,7 @@ if selected == "Energievraag Sectoren":
 
 
   # HEATMAP
-  data = pd.read_excel("Data_verbruik_v7.xlsx")
+  data = pd.read_excel('Data_verbruik_v7.xlsx')
 
   # Functie om geocoding uit te voeren met Nominatim
   def geocode_address(street, postcode):
@@ -80,7 +80,6 @@ if selected == "Energievraag Sectoren":
 
   # Streamlit layout
   st.title("Heatmap van Energieverbruik per Pand in Oostpoort Amsterdam")
-
 
   df1 = pd.DataFrame(data)
 
@@ -109,7 +108,7 @@ if selected == "Energievraag Sectoren":
   st_folium(m, width=700, height=500)
 
   # Laat de gegevens zien
-  st.write(df1_grouped)
+  #st.write(df1_grouped)
 
 
 
