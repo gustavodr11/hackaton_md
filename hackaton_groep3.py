@@ -209,7 +209,7 @@ if selected == 'Zonnepanelen':
                barmode='group',
                labels={'value': 'Opbrengst (kWh)', 'pand': 'Pand', 'variable': 'Type'},
                title='Vergelijking Huidige en Maximale Elektriciteitsopbrengst per Pand',
-               color_discrete_map={'Huidige_opbrengst': 'blue', 'Maximale_opbrengst_zonnepanelen (kwh)': 'green'}) 
+               color_discrete_map={'Huidige_opbrengst': 'blue', 'Maximale_opbrengst_zonnepanelen (kwh)': 'red'}) 
 
   # Toon de grafiek in Streamlit
   st.plotly_chart(fig4)
