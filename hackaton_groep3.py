@@ -37,18 +37,29 @@ if selected == "Energievraag Sectoren":
   st.title("Energievraag Sectoren")
   st.subheader("Sloterdijk Poort Noord")
   
-  # Piechart
-  sectoren = ['Non-ferrobedrijven', 'Vervoer en opslag', 'Houtindustrie', 'Groothandel/hygiene', 
-            'Voedings en genotsmiddelen', 'Auto-industrie', 'Farmaceutische industrie', 
-            'Drankindustrie', 'Leidingen industrie']
+  # PIECHART
+  sectoren = ['Non-ferrobedrijven', 'Vervoer en opslag', 'Houtindustrie', 
+            'Groothandel/hygiene', 'Voedings en genotsmiddelen', 'Auto-industrie', 
+            'Farmaceutische industrie', 'Drankindustrie', 'Leidingen industrie']
 
-  aantal = [1, 12, 1, 1, 1, 4, 2, 1, 1]
+  aantal_2023 = [15.29, 3.26, 0.76, 30.13, 2.78, 14.17, 12.11, 0.57, 20.93]
 
-  fig = px.pie(values=aantal, names=sectoren, title="Aantal bedrijven per sector in bedrijfsterrein Sloterdijk Poort Noord")
+  # Piechart subplot
+  fig = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]],
+                      subplot_titles=["Bedrijven per Sector", "Energieverbruik 2032"])
+
+  fig.add_trace(go.Pie(labels=sectoren, values=[1, 12, 1, 1, 1, 4, 2, 1, 1], 
+                       name="Aantal bedrijven per sector"), row=1, col=1)
+  fig.add_trace(go.Pie(labels=sectoren, values=aantal_2023, name="Energieverbruik 2032"), row=1, col=2)
+  fig.update_traces(hole=0.3, hoverinfo="label+percent+name")
+  fig.update_layout(title_text="Vergelijking: Bedrijven per Sector en Energieverbruik 2032",
+                    annotations=[dict(text='Bedrijven', x=0.18, y=0.5, font_size=15, showarrow=False),
+                                 dict(text='Verbruik', x=0.82, y=0.5, font_size=15, showarrow=False)])
+
   st.plotly_chart(fig)
 
 
-  # Subplots
+  # SUBPLOTS
   df = pd.read_excel('Energieverbruik_ddjh2_0.xlsx')
 
   # Checkbox 
