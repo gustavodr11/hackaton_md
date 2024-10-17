@@ -40,7 +40,7 @@ if selected == 'Intro':
 # ENERGIEVRAAG SECTOREN pagina
 if selected == "Energievraag Sectoren": 
   st.title("Energievraag Sectoren")
-  st.subheader("Sloterdijk Poort Noord")
+  st.header("Sloterdijk Poort Noord")
   
   # PIECHART
   sectoren = ['Non-ferrobedrijven', 'Vervoer en opslag', 'Houtindustrie', 
@@ -79,7 +79,7 @@ if selected == "Energievraag Sectoren":
           return None, None
 
   # Streamlit layout
-  st.title("Heatmap van Energieverbruik per Pand in Oostpoort Amsterdam")
+  st.subheader("Heatmap van Energieverbruik per Pand in Sloterdijk Poort Noord Amsterdam")
 
   df1 = pd.DataFrame(data)
 
@@ -98,7 +98,7 @@ if selected == "Energievraag Sectoren":
 
   # Maak een kaart met folium, gecentreerd op een gemiddelde locatie in Oostpoort Amsterdam
   map_center = [df1_grouped["Latitude"].mean(), df1_grouped["Longitude"].mean()]
-  m = folium.Map(location=map_center, zoom_start=13)
+  m = folium.Map(location=map_center, zoom_start=15)
 
   # Voeg energieverbruik toe aan de kaart als een heatmap
   heat_data = [[row['Latitude'], row['Longitude'], row['Totaal verbruik per week (kWh)']] for index, row in df1_grouped.iterrows()]
