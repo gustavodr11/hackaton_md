@@ -46,8 +46,10 @@ if selected == "Energievraag Sectoren":
   st.plotly_chart(fig)
 
   df = pd.read_excel('Energieverbruik_ddjh2_0.xlsx')
-  
-  fig, axes = plt.subplots(3, 3, figsize=(18,12))
+
+  limit_checkbox = st.checkbox('Beperk de y-as tot een maximum van 0.3')
+
+  fig, axes = plt.subplots(3, 3, figsize=(18, 12))
 
   sns.regplot(ax=axes[0, 0], data=df, x='years', y='Non-ferrobedrijven')
   sns.regplot(ax=axes[0, 1], data=df[df['years'] >= 2010], x="years", y="Vervoer en opslag")
@@ -58,7 +60,12 @@ if selected == "Energievraag Sectoren":
   sns.regplot(ax=axes[2, 0], data=df[df['years'] >= 2011], x='years', y='Farmaceutische industrie')
   sns.regplot(ax=axes[2, 1], data=df[df['years'] >= 1995], x='years', y='Drankindustrie')
   sns.regplot(ax=axes[2, 2], data=df[df['years'] >= 2011], x='years', y='Leidingen industrie')
-  
+
+  for ax in axes.flat:
+      ax.set_ylabel("Energieverbruik [PJ]")
+      if limit_checkbox:
+          ax.set_ylim(top=0.3)  # Stel de y-as limiet in op een maximum van 0.3
+
   plt.tight_layout()
 
   st.pyplot(fig)
