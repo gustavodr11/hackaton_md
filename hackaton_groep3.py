@@ -6,6 +6,11 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+import folium
+from folium.plugins import HeatMap
+from streamlit_folium import st_folium
+from geopy.geocoders import Nominatim
+from geopy.exc import GeocoderTimedOut
 
 
 st.set_page_config(page_title='Hackaton Minor Datascience 2024 (groep 3)', page_icon='💻')
@@ -54,6 +59,10 @@ if selected == "Energievraag Sectoren":
   fig.update_layout(title_text="Piechart Bedrijven per Sector en Energieverbruik 2023")
 
   st.plotly_chart(fig)
+
+
+  # HEATMAP
+  
 
 
   # SUBPLOTS
