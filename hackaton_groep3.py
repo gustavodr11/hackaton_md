@@ -195,7 +195,7 @@ if selected == 'Zonnepanelen':
   
 
   # PLOT stievy
-  df4 = pd.read_excel("Data_verbruik_v8.xlsx")
+  df4 = pd.read_excel("Data_verbruik_v7.xlsx")
 
   df4['Aantal_zonnepanellen'] = pd.to_numeric(df4['Aantal_zonnepanellen'], errors='coerce')
   df4['Maximale_opbrengst_zonnepanelen (kwh)'] = pd.to_numeric(df4['Maximale_opbrengst_zonnepanelen (kwh)'], errors='coerce')
