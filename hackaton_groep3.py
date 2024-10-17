@@ -166,13 +166,14 @@ if selected == 'Zonnepanelen':
 
 
   # Streamlit layout
+  df3 = pd.read_excel("Data_verbruik_v8.xlsx")
   st.subheader("Histogram van Zonnepanelen per Pand")
 
   # Zorg ervoor dat er geen null waarden zijn in de kolommen die je nodig hebt
-  df1 = df1.dropna(subset=['pand', 'Aantal_zonnepanellen', 'Potentieel_zonnepanelen'])
+  df3 = df3.dropna(subset=['pand', 'Aantal_zonnepanellen', 'Potentieel_zonnepanelen'])
 
   # Maak een histogram met Plotly
-  fig3 = px.histogram(df1, x='pand', y=['Aantal_zonnepanellen', 'Potentieel_zonnepanelen'], 
+  fig3 = px.histogram(df3, x='pand', y=['Aantal_zonnepanellen', 'Potentieel_zonnepanelen'], 
                    barmode='group', 
                    title='Aantal Zonnepanelen en Potentieel per Pand')
 
