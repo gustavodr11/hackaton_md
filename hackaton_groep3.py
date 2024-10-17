@@ -33,6 +33,7 @@ if selected == 'Intro':
 # ENERGIEVRAAG SECTOREN pagina
 if selected == "Energievraag Sectoren": 
   st.title("Energievraag Sectoren")
+  st.subheader("Sloterdijk Poort Noord")
   
   # Piechart
   sectoren = ['Non-ferrobedrijven', 'Vervoer en opslag', 'Houtindustrie', 'Groothandel/hygiene', 
