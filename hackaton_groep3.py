@@ -208,7 +208,8 @@ if selected == 'Zonnepanelen':
   fig4 = px.bar(df4, x='pand', y=['Huidige_opbrengst', 'Maximale_opbrengst_zonnepanelen (kwh)'],
                barmode='group',
                labels={'value': 'Opbrengst (kWh)', 'pand': 'Pand', 'variable': 'Type'},
-               title='Vergelijking Huidige en Maximale Elektriciteitsopbrengst per Pand')
+               title='Vergelijking Huidige en Maximale Elektriciteitsopbrengst per Pand',
+               color_discrete_map={'Huidige_opbrengst': 'blue', 'Maximale_opbrengst_zonnepanelen (kwh)': 'green'}) 
 
   # Toon de grafiek in Streamlit
   st.plotly_chart(fig4)
