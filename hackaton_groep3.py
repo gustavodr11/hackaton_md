@@ -77,7 +77,7 @@ if selected == "Energievraag Sectoren":
   heat_data = [[row['Latitude'], row['Longitude'], row['Totaal verbruik per week (kWh)']] for index, row in df1_grouped.iterrows()]
   HeatMap(heat_data, radius=24, max_zoom=13).add_to(m)
 
-  st_folium(m, width=500, height=500)
+  st_folium(m, width=700, height=500)
 
 
   # DAGELIJKS, WEEKELIJKS, MAANDELIJKS PLOTS
