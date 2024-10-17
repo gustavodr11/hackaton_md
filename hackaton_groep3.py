@@ -64,7 +64,7 @@ if selected == "Energievraag Sectoren":
   # HEATMAP
   data = pd.read_excel("Data_verbruik_v8.xlsx")
 
-  st.subheader("Heatmap van Energieverbruik per Pand in Oostpoort Amsterdam")
+  st.subheader("Heatmap van Energieverbruik per Pand in Sloterdijk Poort Noord Amsterdam")
 
   df1 = pd.DataFrame(data)
   df1 = df1.dropna(subset=['Latitude', 'Longitude'])
