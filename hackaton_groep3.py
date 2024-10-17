@@ -79,6 +79,8 @@ if selected == "Energievraag Sectoren":
 
   st_folium(m, width=700, height=500)
 
+  st.markdown("---")
+
 
   # DAGELIJKS, WEEKELIJKS, MAANDELIJKS PLOTS
   # Lees het Excel-bestand in
