@@ -82,6 +82,39 @@ if selected == "Energievraag Sectoren":
   st_folium(m, width=700, height=500)
 
 
+  # DAGELIJKS, WEEKELIJKS, MAANDELIJKS PLOTS
+  # Lees het Excel-bestand in
+  df2 = pd.read_excel('verbruik_persector_dwm.xlsx')
+
+  # Kolomnamen specificeren die je wilt gebruiken
+  sector_col = 'Sector'
+  daily_columns = ['Verbruik maandag', 'Verbruik dinsdag', 'Verbruik woensdag', 'Verbruik donderdag', 'Verbruik vrijdag', 'Verbruik zaterdag', 'Verbruik zondag']
+  weekly_col = 'Week verbruik'
+  monthly_col = 'Maand verbruik'  # Correctie: Haakje verwijderd
+
+  # Dagelijkse gegevens omzetten naar lange vorm voor gebruik in plot
+  df_dagelijks = df2.melt(id_vars=sector_col, value_vars=daily_columns, 
+                          var_name='Dag', value_name='Dagelijks Verbruik')
+
+  # Dropdownmenu voor selectie (dagelijks, wekelijks of maandelijks verbruik)
+  keuze = st.selectbox('Selecteer het type verbruik:', ['Dagelijks Verbruik', weekly_col, monthly_col])
+
+  # Maak de visualisatie op basis van de kolomkeuze
+  if keuze == 'Dagelijks Verbruik':
+      # Lijnplot voor dagelijks verbruik
+      fig = px.line(df_dagelijks, x='Dag', y='Dagelijks Verbruik', color=sector_col, 
+                      title=f'{keuze} per dag per sector', 
+                      labels={'Dagelijks Verbruik': 'Verbruik (kWh)', 'Dag': 'Dag van de week'})
+  else:
+      # Staafdiagram voor wekelijkse of maandelijkse verbruik
+      fig = px.bar(df2, x=sector_col, y=keuze, color=sector_col, 
+                      title=f'Energieverbruik per sector ({keuze})', 
+                      labels={keuze: 'Verbruik (kWh)'})
+
+  # Grafiek weergeven in Streamlit
+  st.plotly_chart(fig)
+
+
   # SUBPLOTS
   df = pd.read_excel('Energieverbruik_ddjh2_0.xlsx')
 
