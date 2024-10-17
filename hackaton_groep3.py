@@ -47,24 +47,39 @@ if selected == "Energievraag Sectoren":
 
   df = pd.read_excel('Energieverbruik_ddjh2_0.xlsx')
 
+  # Checkbox 
   limit_checkbox = st.checkbox('Beperk de y-as tot een maximum van 0.3')
 
   fig, axes = plt.subplots(3, 3, figsize=(18, 12))
 
+  sectoren = ['Non-ferrobedrijven', 'Vervoer en opslag', 'Houtindustrie', 
+              'Groothandel/hygiene', 'Voedings en genotsmiddelen', 'Auto-industrie', 
+              'Farmaceutische industrie', 'Drankindustrie', 'Leidingen industrie']
+
+  # regplots
   sns.regplot(ax=axes[0, 0], data=df, x='years', y='Non-ferrobedrijven')
+  axes[0, 0].set_title(sectoren[0])
   sns.regplot(ax=axes[0, 1], data=df[df['years'] >= 2010], x="years", y="Vervoer en opslag")
+  axes[0, 1].set_title(sectoren[1])
   sns.regplot(ax=axes[0, 2], data=df, x='years', y='Houtindustrie')
+  axes[0, 2].set_title(sectoren[2])
   sns.regplot(ax=axes[1, 0], data=df[df['years'] >= 2011], x='years', y='Groothandel/hygiene')
+  axes[1, 0].set_title(sectoren[3])
   sns.regplot(ax=axes[1, 1], data=df, x='years', y='Voedings en genotsmiddelen')
+  axes[1, 1].set_title(sectoren[4])
   sns.regplot(ax=axes[1, 2], data=df[df['years'] >= 1995], x='years', y='Auto-industrie')
+  axes[1, 2].set_title(sectoren[5])
   sns.regplot(ax=axes[2, 0], data=df[df['years'] >= 2011], x='years', y='Farmaceutische industrie')
+  axes[2, 0].set_title(sectoren[6])
   sns.regplot(ax=axes[2, 1], data=df[df['years'] >= 1995], x='years', y='Drankindustrie')
+  axes[2, 1].set_title(sectoren[7])
   sns.regplot(ax=axes[2, 2], data=df[df['years'] >= 2011], x='years', y='Leidingen industrie')
+  axes[2, 2].set_title(sectoren[8])
 
   for ax in axes.flat:
       ax.set_ylabel("Energieverbruik [PJ]")
       if limit_checkbox:
-          ax.set_ylim(top=0.3)  # Stel de y-as limiet in op een maximum van 0.3
+          ax.set_ylim(top=0.3)  
 
   plt.tight_layout()
 
