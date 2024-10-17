@@ -62,11 +62,11 @@ if selected == "Energievraag Sectoren":
 
 
   # HEATMAP
-  data = pd.read_excel("Data_verbruik_v8.xlsx")
+  df1 = pd.read_excel("Data_verbruik_v8.xlsx")
 
   st.subheader("Heatmap van Energieverbruik per Pand in Sloterdijk Poort Noord Amsterdam")
 
-  df1 = pd.DataFrame(data)
+  #df1 = pd.DataFrame(data)
   df1 = df1.dropna(subset=['Latitude', 'Longitude'])
 
   df1["Totaal verbruik per week (kWh)"] = df1[["Verbruik maandag", "Verbruik dinsdag", "Verbruik woensdag", 
