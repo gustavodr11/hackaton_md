@@ -163,3 +163,18 @@ if selected == 'Zonnepanelen':
   
   st.subheader("Pandnummers Sloterijk Poort Noord")
   st.image("panden_ams.png", caption="Panden in Sloterdijk Poort Noord")
+
+
+  # Streamlit layout
+  st.subheader("Histogram van Zonnepanelen per Pand")
+
+  # Zorg ervoor dat er geen null waarden zijn in de kolommen die je nodig hebt
+  df1 = df1.dropna(subset=['pand', 'Aantal_zonnepanellen', 'Potentieel_zonnepanelen'])
+
+  # Maak een histogram met Plotly
+  fig3 = px.histogram(df1, x='pand', y=['Aantal_zonnepanellen', 'Potentieel_zonnepanelen'], 
+                   barmode='group', 
+                   title='Aantal Zonnepanelen en Potentieel per Pand')
+
+  # Toon de grafiek in Streamlit
+  st.plotly_chart(fig3)
