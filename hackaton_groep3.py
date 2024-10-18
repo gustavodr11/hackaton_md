@@ -274,6 +274,7 @@ if selected == "Energievraag Sectoren":
 # ZONNEPANELEN pagina
 if selected == 'Zonnepanelen':
   st.title("Zonnepanelen")
+  st.header("Sloterdijk Poort Noord")
 
   # SCREENSHOTS
   st.subheader("Bestaande infrastructuur op het terrein")
