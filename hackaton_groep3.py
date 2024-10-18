@@ -197,6 +197,52 @@ if selected == "Energievraag Sectoren":
     HeatMap(heat_data2, radius=24, max_zoom=13).add_to(m2)
 
     st_folium(m2, width=700, height=500)
+
+
+  # DWM ROTTERDAM
+  data_rotterdam = {
+      'Sector': ['Groothandel fruit', 'Vervoer en opslag'],
+      'Verbruik maandag': [23794.73789, 28787.52474],
+      'Verbruik dinsdag': [23794.73789, 28787.52474],
+      'Verbruik woensdag': [23794.73789, 28787.52474],
+      'Verbruik donderdag': [23794.73789, 28787.52474],
+      'Verbruik vrijdag': [23794.73789, 28787.52474],
+      'Verbruik zaterdag': [10579.05583, 10519.03078],
+      'Verbruik zondag': [8870.131429, 7722.832723],
+      'Week verbruik': [138422.8767, 162179.4872],
+      'Maand verbruik': [553691.5068, 648717.9487]
+  }
+
+  # Maak een dataframe met de nieuwe data
+  df6 = pd.DataFrame(data_rotterdam)
+
+  # Kolomnamen specificeren die je wilt gebruiken
+  sector_col2 = 'Sector'
+  daily_columns2 = ['Verbruik maandag', 'Verbruik dinsdag', 'Verbruik woensdag', 'Verbruik donderdag', 'Verbruik vrijdag', 'Verbruik zaterdag', 'Verbruik zondag']
+  weekly_col2 = 'Week verbruik'
+  monthly_col2 = 'Maand verbruik'
+
+  # Dagelijkse gegevens omzetten naar lange vorm voor gebruik in plot
+  df_dagelijks2 = df6.melt(id_vars=sector_col2, value_vars=daily_columns2, 
+                            var_name='Dag', value_name='Dagelijks Verbruik')
+
+  # Dropdownmenu voor selectie (dagelijks, wekelijks of maandelijks verbruik)
+  keuze2 = st.selectbox('Selecteer het type verbruik voor Rotterdam:', ['Dagelijks Verbruik', weekly_col2, monthly_col2])
+
+  # Maak de visualisatie op basis van de kolomkeuze
+  if keuze2 == 'Dagelijks Verbruik':
+      # Lijnplot voor dagelijks verbruik
+      fig6 = px.line(df_dagelijks2, x='Dag', y='Dagelijks Verbruik', color=sector_col2, 
+                      title=f'{keuze2} per dag per sector (Rotterdam)', 
+                      labels={'Dagelijks Verbruik': 'Verbruik (kWh)', 'Dag': 'Dag van de week'},
+                      markers=True)
+  else:
+      # Staafdiagram voor wekelijkse of maandelijkse verbruik
+      fig6 = px.bar(df6, x=sector_col2, y=keuze2, color=sector_col2, 
+                      title=f'Energieverbruik per sector ({keuze2}) (Rotterdam)', 
+                      labels={keuze2: 'Verbruik (kWh)'})
+
+  st.plotly_chart(fig6)
   
 
 # --------------------------------------------------------------------------
