@@ -343,4 +343,32 @@ if selected == 'Zonnepanelen':
   st.subheader("Pandnummers Dutch Fresh Port: Nieuw-Reijerwaard")
   st.image("panden_rot.png", caption="Panden in Dutch Fresh Port: Nieuw-Reijerwaard")
 
+
+  # AANTAL ZONNEPANELEN HIST ROTTERDAM
+  
+  pand2 = [1, 2, 3, 4, 5]
+  aantal_zonnepanelen2 = [3500, 8500, 0, 0, 6000]
+  potentieel2 = [7037, 15087, 20800, 7370, 11629]
+
+  # Maak een dataframe met de gegevens
+  df8 = pd.DataFrame({
+      'Pand': pand,
+      'Aantal zonnepanelen': aantal_zonnepanelen,
+      'Potentieel zonnepanelen': potentieel
+  })
+
+  # Zet de data in lang formaat voor Plotly
+  df_melted3 = df8.melt(id_vars=['Pand'], value_vars=['Aantal zonnepanelen', 'Potentieel zonnepanelen'], 
+                       var_name='Type', value_name='Aantal')
+
+  # Maak een histogram met Plotly
+  fig8 = px.bar(df_melted3, x='Pand', y='Aantal', color='Type', barmode='group',
+                title='Aantal Zonnepanelen en Potentieel per Pand')
+
+  # Pas de y-as label aan
+  fig8.update_layout(yaxis_title="Aantal")
+
+  # Toon de grafiek in Streamlit
+  st.plotly_chart(fig8)
+
   
