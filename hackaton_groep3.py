@@ -30,6 +30,7 @@ if selected == 'Intro':
         - [Energieverbruik per sector](https://opendata.cbs.nl/statline/#/CBS/nl/dataset/83989NED/table?dl=21D0E)
         - [Aantal bedrijven per sector](https://opendata.cbs.nl/#/CBS/nl/dataset/81589NED/table?searchKeywords=voeding)
         - [Opbrengst zonnepanelen](https://waternet.omgevingswarmte.nl/waternet#c9eaed99-a69e-48eb-9642-61c0e0b77078)
+        - [Terreinen verkennen(Google Maps)](https://www.google.com/maps/@51.8659572,4.5695338,1268m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI0MTAxNS4wIKXMDSoASAFQAw%3D%3D)
     """)
     
 
