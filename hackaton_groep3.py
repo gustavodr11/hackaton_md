@@ -30,7 +30,7 @@ if selected == 'Intro':
         Vraag 3 is ons automatisch toegewezen, en daarnaast hebben we zelf gekozen voor vraag 5, omdat we allemaal veel interesse hebben in zonnepanelen. 
         De vragen luiden als volgt:
 
-        Energievraag panden – hoeveel energie wordt door de panden gebruikt
+        Energievraag panden – hoeveel energie wordt door de panden gebruikt.
         (3) Sector + gebruiksfunctie – wat zijn typische patronen voor de sector waarin een bedrijf actief is.  
         Gaat het om kantoorfunctie, distributie of productie?
 
