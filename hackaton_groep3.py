@@ -352,9 +352,9 @@ if selected == 'Zonnepanelen':
 
   # Maak een dataframe met de gegevens
   df8 = pd.DataFrame({
-      'Pand': pand,
-      'Aantal zonnepanelen': aantal_zonnepanelen,
-      'Potentieel zonnepanelen': potentieel
+      'Pand': pand2,
+      'Aantal zonnepanelen': aantal_zonnepanelen2,
+      'Potentieel zonnepanelen': potentieel2
   })
 
   # Zet de data in lang formaat voor Plotly
