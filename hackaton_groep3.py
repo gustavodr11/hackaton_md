@@ -215,7 +215,7 @@ if selected == "Energievraag Sectoren":
 
   # Maak een dataframe met de nieuwe data
   df6 = pd.DataFrame(data_rotterdam)
-  st.write("Rotterdam Verbruik Data", df6)
+ # st.write("Rotterdam Verbruik Data", df6)
   sector_col2 = 'Sector'
   daily_columns2 = ['Verbruik maandag', 'Verbruik dinsdag', 'Verbruik woensdag', 'Verbruik donderdag', 'Verbruik vrijdag', 'Verbruik zaterdag', 'Verbruik zondag']
   weekly_col2 = 'Week verbruik'
@@ -224,10 +224,10 @@ if selected == "Energievraag Sectoren":
   # Dagelijkse gegevens omzetten naar lange vorm voor gebruik in plot
   df_dagelijks2 = df6.melt(id_vars=sector_col2, value_vars=daily_columns2, 
                             var_name='Dag', value_name='Dagelijks Verbruik')
-  st.write("Gesmolten Dagelijks Verbruik Data", df_dagelijks2)
+#  st.write("Gesmolten Dagelijks Verbruik Data", df_dagelijks2)
   # Dropdownmenu voor selectie (dagelijks, wekelijks of maandelijks verbruik)
   keuze2 = st.selectbox('Selecteer het type verbruik voor Rotterdam:', ['Dagelijks Verbruik', weekly_col2, monthly_col2])
-  st.write("Geselecteerde keuze:", keuze2)
+#  st.write("Geselecteerde keuze:", keuze2)
   # Maak de visualisatie op basis van de kolomkeuze
   if keuze2 == 'Dagelijks Verbruik':
       # Lijnplot voor dagelijks verbruik
@@ -240,7 +240,7 @@ if selected == "Energievraag Sectoren":
       fig6 = px.bar(df6, x=sector_col2, y=keuze2, color=sector_col2, 
                       title=f'Energieverbruik per sector ({keuze2}) (Rotterdam)', 
                       labels={keuze2: 'Verbruik (kWh)'})
-  st.write("Plot wordt hieronder weergegeven:")
+ # st.write("Plot wordt hieronder weergegeven:")
   st.plotly_chart(fig6)
   
 
