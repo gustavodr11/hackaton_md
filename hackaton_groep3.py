@@ -213,7 +213,7 @@ if selected == "Energievraag Sectoren":
       'Maand verbruik': [553691.5068, 648717.9487]
   }
 
-  # Maak een dataframe met de nieuwe data
+  
   df6 = pd.DataFrame(data_rotterdam)
  # st.write("Rotterdam Verbruik Data", df6)
   sector_col2 = 'Sector'
@@ -221,22 +221,22 @@ if selected == "Energievraag Sectoren":
   weekly_col2 = 'Week verbruik'
   monthly_col2 = 'Maand verbruik'
 
-  # Dagelijkse gegevens omzetten naar lange vorm voor gebruik in plot
+  
   df_dagelijks2 = df6.melt(id_vars=sector_col2, value_vars=daily_columns2, 
                             var_name='Dag', value_name='Dagelijks Verbruik')
 #  st.write("Gesmolten Dagelijks Verbruik Data", df_dagelijks2)
-  # Dropdownmenu voor selectie (dagelijks, wekelijks of maandelijks verbruik)
+  
   keuze2 = st.selectbox('Selecteer het type verbruik voor Rotterdam:', ['Dagelijks Verbruik', weekly_col2, monthly_col2])
 #  st.write("Geselecteerde keuze:", keuze2)
-  # Maak de visualisatie op basis van de kolomkeuze
+ 
   if keuze2 == 'Dagelijks Verbruik':
-      # Lijnplot voor dagelijks verbruik
+      
       fig6 = px.line(df_dagelijks2, x='Dag', y='Dagelijks Verbruik', color=sector_col2, 
                       title=f'{keuze2} per dag per sector (Rotterdam)', 
                       labels={'Dagelijks Verbruik': 'Verbruik (kWh)', 'Dag': 'Dag van de week'},
                       markers=True)
   else:
-      # Staafdiagram voor wekelijkse of maandelijkse verbruik
+      
       fig6 = px.bar(df6, x=sector_col2, y=keuze2, color=sector_col2, 
                       title=f'Energieverbruik per sector ({keuze2}) (Rotterdam)', 
                       labels={keuze2: 'Verbruik (kWh)'})
