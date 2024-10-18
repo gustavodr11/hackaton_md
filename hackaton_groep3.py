@@ -150,6 +150,32 @@ if selected == "Energievraag Sectoren":
   plt.tight_layout()
 
   st.pyplot(fig)
+
+
+  # ROTTERDAM
+  st.header("Dutch Fresh Port: Nieuw-Reijerwaard")
+
+  # Sectoren en aantallen voor Rotterdam
+  sectoren_rotterdam = ['Groothandel fruit', 'Vervoer en opslag']
+  aantal_rotterdam = [3, 3]  # Aantal bedrijven per sector
+  aantal2_2023 = [97.2, 2.8]  # Energieverbruik percentages voor 2023
+
+  # Piechart subplot voor Rotterdam
+  fig_rotterdam = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]],
+                                subplot_titles=["Bedrijven per Sector", "Energieverbruik 2023"])
+
+  # Bedrijven per sector
+  fig_rotterdam.add_trace(go.Pie(labels=sectoren_rotterdam, values=aantal_rotterdam, 
+                                 name="Aantal bedrijven per sector"), row=1, col=1)
+
+  # Energieverbruik per sector
+  fig_rotterdam.add_trace(go.Pie(labels=sectoren_rotterdam, values=aantal2_2023, name="Energieverbruik 2023"), row=1, col=2)
+
+  # Layout aanpassen
+  fig_rotterdam.update_layout(title_text="Rotterdam: Bedrijven per Sector en Energieverbruik 2023")
+
+  # Toon de grafiek in Streamlit
+  st.plotly_chart(fig_rotterdam)
   
 
 # --------------------------------------------------------------------------
