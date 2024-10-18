@@ -266,30 +266,6 @@ if selected == "Energievraag Sectoren":
 
 
 
-  # ROTTERDAM SUBPLOTS
-  df7 = pd.read_excel('rotterdam_data_subplot.xlsx')
-
-  # Checkbox 
-  limit_checkbox2 = st.checkbox('Beperk de y-as tot een maximum van 0.11')
-
-  fig7, axes7 = plt.subplots(1, 2, figsize=(10, 4))
-
-  # regplots
-  sns.regplot(ax=axes7[0], data=df7, x='years', y='Groothandel fruit')
-  axes7[0].set_title('Groothandel fruit')
-
-  sns.regplot(ax=axes7[1], data=df7, x='years', y='Vervoer en opslag')
-  axes7[1].set_title('Vervoer en opslag')
-
-  for ax in axes7.flat:
-      ax.set_ylabel("Energieverbruik [PJ]")
-      if limit_checkbox2:
-          ax.set_ylim(top=0.11)  
-
-  plt.tight_layout()
-
-  st.pyplot(fig7)
-
 # --------------------------------------------------------------------------
 
 # ZONNEPANELEN pagina
