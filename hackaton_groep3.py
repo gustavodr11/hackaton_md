@@ -169,7 +169,7 @@ if selected == "Energievraag Sectoren":
                                  name="Aantal bedrijven per sector"), row=1, col=1)
 
   # Energieverbruik per sector
-  fig_rotterdam.add_trace(go.Pie(labels=sectoren_rotterdam, values=aantal2_2023, name="Energieverbruik 2023"), row=1, col=2)
+  fig_rotterdam.add_trace(go.Pie(labels=sectoren_rotterdam, values=aantal2_2023, name="Energieverbruik 2023"), row=1, col=1)
 
   # Layout aanpassen
   fig_rotterdam.update_layout(title_text="Rotterdam: Bedrijven per Sector en Energieverbruik 2023")
