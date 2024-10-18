@@ -337,4 +337,10 @@ if selected == 'Zonnepanelen':
   # SCREENSHOTS ROTTERDAM
   st.header("Dutch Fresh Port: Nieuw-Reijerwaard")
 
+  st.subheader("Bestaande infrastructuur op het terrein")
+  st.image("middenspanningskabels_rot.png", caption="Middenspanningskabels in Dutch Fresh Port: Nieuw-Reijerwaard", use_column_width=True)
+  
+  st.subheader("Pandnummers Dutch Fresh Port: Nieuw-Reijerwaard")
+  st.image("panden_rot.png", caption="Panden in Dutch Fresh Port: Nieuw-Reijerwaard")
+
   
