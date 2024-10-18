@@ -152,7 +152,7 @@ if selected == "Energievraag Sectoren":
   st.pyplot(fig)
 
 
-  # ROTTERDAM
+  # PIE CHART ROTTERDAM
   st.header("Dutch Fresh Port: Nieuw-Reijerwaard")
 
   # Sectoren en aantallen voor Rotterdam
@@ -176,6 +176,28 @@ if selected == "Energievraag Sectoren":
 
   # Toon de grafiek in Streamlit
   st.plotly_chart(fig_rotterdam)
+
+
+
+  # HEATMAP ROTTERDAM
+  with st.container():
+    st.subheader("Heatmap van Energieverbruik per Pand in Dutch Fresh Port: Nieuw-Reijerwaard")
+
+    df5 = pd.read_excel("rotterdam_verbruik.xlsx")
+    df5 = df1.dropna(subset=['Latitude', 'Longitude'])
+
+    df5["Totaal verbruik per week (kWh)"] = df5[["Verbruik maandag", "Verbruik dinsdag", "Verbruik woensdag", 
+                                               "Verbruik donderdag", "Verbruik vrijdag"]].sum(axis=1)
+
+    df5_grouped = df5.groupby(["pand", "Latitude", "Longitude"], as_index=False)["Totaal verbruik per week (kWh)"].sum()
+
+    map_center = [51.866002, 4.569382]
+    m = folium.Map(location=map_center, zoom_start=15)
+
+    heat_data = [[row['Latitude'], row['Longitude'], row['Totaal verbruik per week (kWh)']] for index, row in df1_grouped.iterrows()]
+    HeatMap(heat_data, radius=24, max_zoom=13).add_to(m)
+
+    st_folium(m, width=700, height=500)
   
 
 # --------------------------------------------------------------------------
