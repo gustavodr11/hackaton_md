@@ -191,13 +191,13 @@ if selected == "Energievraag Sectoren":
 
     df5_grouped = df5.groupby(["pand", "Latitude", "Longitude"], as_index=False)["Totaal verbruik per week (kWh)"].sum()
 
-    map_center = [51.866002, 4.569382]
-    m = folium.Map(location=map_center, zoom_start=15)
+    map_center2 = [51.866002, 4.569382]
+    m2 = folium.Map(location=map_center2, zoom_start=15)
 
-    heat_data = [[row['Latitude'], row['Longitude'], row['Totaal verbruik per week (kWh)']] for index, row in df1_grouped.iterrows()]
-    HeatMap(heat_data, radius=24, max_zoom=13).add_to(m)
+    heat_data2 = [[row['Latitude'], row['Longitude'], row['Totaal verbruik per week (kWh)']] for index, row in df5_grouped.iterrows()]
+    HeatMap(heat_data2, radius=24, max_zoom=13).add_to(m2)
 
-    st_folium(m, width=700, height=500)
+    st_folium(m2, width=700, height=500)
   
 
 # --------------------------------------------------------------------------
