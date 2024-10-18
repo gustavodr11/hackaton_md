@@ -22,6 +22,26 @@ with st.sidebar:
 # INTRO pagina
 if selected == 'Intro':
     st.title("Hackaton - Groep 3")
+
+
+    # Korte uitleg
+    st.write("""
+        Welkom bij onze presentatie. Wij zijn groep 3 en hebben voor deze casus twee vragen behandeld. 
+        Vraag 3 is ons automatisch toegewezen, en daarnaast hebben we zelf gekozen voor vraag 5, omdat we allemaal veel interesse hebben in zonnepanelen. 
+        De vragen luiden als volgt:
+
+        Energievraag panden – hoeveel energie wordt door de panden gebruikt
+        (3) Sector + gebruiksfunctie – wat zijn typische patronen voor de sector waarin een bedrijf actief is.  
+        Gaat het om kantoorfunctie, distributie of productie?
+
+        Aansluitingen netbeheerder – hoeveel elektriciteit is er beschikbaar?
+        (5) Bestaande infrastructuur op het terrein + kansen voor zonnepanelen - wat is de
+        maximale hoeveelheid energie die geleverd kan worden?
+
+        Voor onze casus hebben we voornamelijk de bedrijfsterrein Sloterdijk Poort Noord onderzocht. 
+        Om de schaalbaarheid van onze onderzoekstechniek te testen, hebben we deze vervolgens ook toegepast op een kleiner deel van Dutch Fresh Port (Nieuw Reijerwaard).
+
+    """)
     
     
     # Bronnen
