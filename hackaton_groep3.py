@@ -178,14 +178,13 @@ if selected == "Energievraag Sectoren":
   st.plotly_chart(fig_rotterdam)
 
 
-
-
+  
   # HEATMAP ROTTERDAM
   with st.container():
     st.subheader("Heatmap van Energieverbruik per Pand in Dutch Fresh Port: Nieuw-Reijerwaard")
 
     df5 = pd.read_excel("rotterdam_verbruik.xlsx")
-    st.write(df5.columns)
+  
     df5["Totaal verbruik per week (kWh)"] = df5[["Verbruik maandag", "Verbruik dinsdag", "Verbruik woensdag", 
                                                "Verbruik donderdag", "Verbruik vrijdag"]].sum(axis=1)
 
