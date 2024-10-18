@@ -82,36 +82,36 @@ if selected == "Energievraag Sectoren":
 
 
   # DAGELIJKS, WEEKELIJKS, MAANDELIJKS PLOTS
-  # Lees het Excel-bestand in
+  
   df2 = pd.read_excel('verbruik_persector_dwm.xlsx')
 
-  # Kolomnamen specificeren die je wilt gebruiken
+  
   sector_col = 'Sector'
   daily_columns = ['Verbruik maandag', 'Verbruik dinsdag', 'Verbruik woensdag', 'Verbruik donderdag', 'Verbruik vrijdag', 'Verbruik zaterdag', 'Verbruik zondag']
   weekly_col = 'Week verbruik'
   monthly_col = 'Maand verbruik'  # Correctie: Haakje verwijderd
 
-  # Dagelijkse gegevens omzetten naar lange vorm voor gebruik in plot
+  
   df_dagelijks = df2.melt(id_vars=sector_col, value_vars=daily_columns, 
                           var_name='Dag', value_name='Dagelijks Verbruik')
 
-  # Dropdownmenu voor selectie (dagelijks, wekelijks of maandelijks verbruik)
+  
   keuze = st.selectbox('Selecteer het type verbruik:', ['Dagelijks Verbruik', weekly_col, monthly_col])
 
-  # Maak de visualisatie op basis van de kolomkeuze
+  
   if keuze == 'Dagelijks Verbruik':
-      # Lijnplot voor dagelijks verbruik
+      
       fig2 = px.line(df_dagelijks, x='Dag', y='Dagelijks Verbruik', color=sector_col, 
                       title=f'{keuze} per dag per sector', 
                       labels={'Dagelijks Verbruik': 'Verbruik (kWh)', 'Dag': 'Dag van de week'},
                       markers=True)
   else:
-      # Staafdiagram voor wekelijkse of maandelijkse verbruik
+      
       fig2 = px.bar(df2, x=sector_col, y=keuze, color=sector_col, 
                       title=f'Energieverbruik per sector ({keuze})', 
                       labels={keuze: 'Verbruik (kWh)'})
 
-  # Grafiek weergeven in Streamlit
+  
   st.plotly_chart(fig2)
 
 
@@ -156,26 +156,26 @@ if selected == "Energievraag Sectoren":
   # PIE CHART ROTTERDAM
   st.header("Dutch Fresh Port: Nieuw-Reijerwaard")
 
-  # Sectoren en aantallen voor Rotterdam
+  
   sectoren_rotterdam = ['Groothandel fruit', 'Vervoer en opslag']
-  aantal_rotterdam = [3, 3]  # Aantal bedrijven per sector
-  aantal2_2023 = [97.2, 2.8]  # Energieverbruik percentages voor 2023
+  aantal_rotterdam = [3, 3]  
+  aantal2_2023 = [97.2, 2.8]  
 
-  # Piechart subplot voor Rotterdam
+  
   fig_rotterdam = make_subplots(rows=1, cols=2, specs=[[{'type':'domain'}, {'type':'domain'}]],
                                 subplot_titles=["Bedrijven per Sector", "Energieverbruik 2023"])
 
-  # Bedrijven per sector
+  
   fig_rotterdam.add_trace(go.Pie(labels=sectoren_rotterdam, values=aantal_rotterdam, 
                                  name="Aantal bedrijven per sector"), row=1, col=1)
 
-  # Energieverbruik per sector
+  
   fig_rotterdam.add_trace(go.Pie(labels=sectoren_rotterdam, values=aantal2_2023, name="Energieverbruik 2023"), row=1, col=2)
 
-  # Layout aanpassen
+  
   fig_rotterdam.update_layout(title_text="Rotterdam: Bedrijven per Sector en Energieverbruik 2023")
 
-  # Toon de grafiek in Streamlit
+  
   st.plotly_chart(fig_rotterdam)
 
 
@@ -286,30 +286,30 @@ if selected == 'Zonnepanelen':
 
 
   # AANTAL ZONNEPANELEN HIST
-  # Handmatig ingevoerde data
+  
   pand = [1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
   aantal_zonnepanelen = [3669, 115, 0, 482, 0, 3283, 0, 0, 0, 0, 0, 673, 0, 0, 1504, 0, 0, 0, 2067, 552, 680, 3100, 0, 0]
   potentieel = [14743, 1649, 690, 637, 828, 4523, 3638, 5703, 2370, 3431, 3045, 1769, 444, 2974, 11061, 540, 843, 798, 4436, 1457, 1545, 3155, 65, 3896]
 
-  # Maak een dataframe met de gegevens
+  
   df3 = pd.DataFrame({
       'Pand': pand,
       'Aantal zonnepanelen': aantal_zonnepanelen,
       'Potentieel zonnepanelen': potentieel
   })
 
-  # Zet de data in lang formaat voor Plotly
+  
   df_melted = df3.melt(id_vars=['Pand'], value_vars=['Aantal zonnepanelen', 'Potentieel zonnepanelen'], 
                        var_name='Type', value_name='Aantal')
 
-  # Maak een histogram met Plotly
+  
   fig3 = px.bar(df_melted, x='Pand', y='Aantal', color='Type', barmode='group',
                 title='Aantal Zonnepanelen en Potentieel per Pand')
 
-  # Pas de y-as label aan
+  
   fig3.update_layout(yaxis_title="Aantal")
 
-  # Toon de grafiek in Streamlit
+  
   st.plotly_chart(fig3)
   
 
@@ -320,17 +320,17 @@ if selected == 'Zonnepanelen':
   df4['Maximale_opbrengst_zonnepanelen (kwh)'] = pd.to_numeric(df4['Maximale_opbrengst_zonnepanelen (kwh)'], errors='coerce')
   df4['oppervlakte'] = pd.to_numeric(df4['oppervlakte'], errors='coerce')
 
-  # Bereken de Huidige_opbrengst
+  
   df4['Huidige_opbrengst'] = (df4['Aantal_zonnepanellen'] / (df4['oppervlakte'] * 0.7 / 1.65)) * df4['Maximale_opbrengst_zonnepanelen (kwh)']
 
-  # Maak een barplot met Plotly
+  
   fig4 = px.bar(df4, x='pand', y=['Huidige_opbrengst', 'Maximale_opbrengst_zonnepanelen (kwh)'],
                barmode='group',
                labels={'value': 'Opbrengst (kWh)', 'pand': 'Pand', 'variable': 'Type'},
                title='Vergelijking Huidige en Maximale Elektriciteitsopbrengst per Pand',
                color_discrete_map={'Huidige_opbrengst': 'blue', 'Maximale_opbrengst_zonnepanelen (kwh)': 'red'}) 
 
-  # Toon de grafiek in Streamlit
+  
   st.plotly_chart(fig4)
 
 
@@ -345,31 +345,32 @@ if selected == 'Zonnepanelen':
   st.image("panden_rot.png", caption="Panden in Dutch Fresh Port: Nieuw-Reijerwaard")
 
 
+  
   # AANTAL ZONNEPANELEN HIST ROTTERDAM
   
   pand2 = [1, 2, 3, 4, 5]
   aantal_zonnepanelen2 = [3500, 8500, 0, 0, 6000]
   potentieel2 = [7037, 15087, 20800, 7370, 11629]
 
-  # Maak een dataframe met de gegevens
+  
   df8 = pd.DataFrame({
       'Pand': pand2,
       'Aantal zonnepanelen': aantal_zonnepanelen2,
       'Potentieel zonnepanelen': potentieel2
   })
 
-  # Zet de data in lang formaat voor Plotly
+  
   df_melted3 = df8.melt(id_vars=['Pand'], value_vars=['Aantal zonnepanelen', 'Potentieel zonnepanelen'], 
                        var_name='Type', value_name='Aantal')
 
-  # Maak een histogram met Plotly
+  
   fig8 = px.bar(df_melted3, x='Pand', y='Aantal', color='Type', barmode='group',
                 title='Aantal Zonnepanelen en Potentieel per Pand')
 
-  # Pas de y-as label aan
+  
   fig8.update_layout(yaxis_title="Aantal")
 
-  # Toon de grafiek in Streamlit
+  
   st.plotly_chart(fig8)
 
 
@@ -381,17 +382,17 @@ if selected == 'Zonnepanelen':
   df9['Maximale_opbrengst_zonnepanelen (kwh)'] = pd.to_numeric(df9['Maximale_opbrengst_zonnepanelen (kwh)'], errors='coerce')
   df9['oppervlakte'] = pd.to_numeric(df9['oppervlakte'], errors='coerce')
 
-  # Bereken de Huidige_opbrengst
+  
   df9['Huidige_opbrengst'] = (df9['Aantal_zonnepanellen'] / (df9['oppervlakte'] * 0.7 / 1.65)) * df9['Maximale_opbrengst_zonnepanelen (kwh)']
 
-  # Maak een barplot met Plotly
+  
   fig9 = px.bar(df9, x='pand', y=['Huidige_opbrengst', 'Maximale_opbrengst_zonnepanelen (kwh)'],
                barmode='group',
                labels={'value': 'Opbrengst (kWh)', 'pand': 'Pand', 'variable': 'Type'},
                title='Vergelijking Huidige en Maximale Elektriciteitsopbrengst per Pand',
                color_discrete_map={'Huidige_opbrengst': 'blue', 'Maximale_opbrengst_zonnepanelen (kwh)': 'red'}) 
 
-  # Toon de grafiek in Streamlit
+  
   st.plotly_chart(fig9)
 
   
