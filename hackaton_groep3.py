@@ -242,6 +242,10 @@ if selected == "Energievraag Sectoren":
                       labels={keuze2: 'Verbruik (kWh)'})
  # st.write("Plot wordt hieronder weergegeven:")
   st.plotly_chart(fig6)
+
+
+
+  # ROTTERDAM SUBPLOTS
   
 
 # --------------------------------------------------------------------------
