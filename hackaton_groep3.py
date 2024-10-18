@@ -184,7 +184,7 @@ if selected == "Energievraag Sectoren":
     st.subheader("Heatmap van Energieverbruik per Pand in Dutch Fresh Port: Nieuw-Reijerwaard")
 
     df5 = pd.read_excel("rotterdam_verbruik.xlsx")
-    df5 = df1.dropna(subset=['Latitude', 'Longitude'])
+    df5 = df5.dropna(subset=['Latitude', 'Longitude'])
 
     df5["Totaal verbruik per week (kWh)"] = df5[["Verbruik maandag", "Verbruik dinsdag", "Verbruik woensdag", 
                                                "Verbruik donderdag", "Verbruik vrijdag"]].sum(axis=1)
