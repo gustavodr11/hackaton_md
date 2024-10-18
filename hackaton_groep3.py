@@ -371,4 +371,26 @@ if selected == 'Zonnepanelen':
   # Toon de grafiek in Streamlit
   st.plotly_chart(fig8)
 
+
+
+  # PLOT stievy
+  df9 = pd.read_excel("rotterdam_verbruik.xlsx")
+
+  df9['Aantal_zonnepanellen'] = pd.to_numeric(df9['Aantal_zonnepanellen'], errors='coerce')
+  df9['Maximale_opbrengst_zonnepanelen (kwh)'] = pd.to_numeric(df9['Maximale_opbrengst_zonnepanelen (kwh)'], errors='coerce')
+  df9['oppervlakte'] = pd.to_numeric(df9['oppervlakte'], errors='coerce')
+
+  # Bereken de Huidige_opbrengst
+  df9['Huidige_opbrengst'] = (df9['Aantal_zonnepanellen'] / (df9['oppervlakte'] * 0.7 / 1.65)) * df9['Maximale_opbrengst_zonnepanelen (kwh)']
+
+  # Maak een barplot met Plotly
+  fig9 = px.bar(df9, x='pand', y=['Huidige_opbrengst', 'Maximale_opbrengst_zonnepanelen (kwh)'],
+               barmode='group',
+               labels={'value': 'Opbrengst (kWh)', 'pand': 'Pand', 'variable': 'Type'},
+               title='Vergelijking Huidige en Maximale Elektriciteitsopbrengst per Pand',
+               color_discrete_map={'Huidige_opbrengst': 'blue', 'Maximale_opbrengst_zonnepanelen (kwh)': 'red'}) 
+
+  # Toon de grafiek in Streamlit
+  st.plotly_chart(fig9)
+
   
