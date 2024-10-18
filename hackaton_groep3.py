@@ -177,6 +177,9 @@ if selected == "Energievraag Sectoren":
   # Toon de grafiek in Streamlit
   st.plotly_chart(fig_rotterdam)
 
+  st.write(df5.columns)
+
+
 
 
   # HEATMAP ROTTERDAM
